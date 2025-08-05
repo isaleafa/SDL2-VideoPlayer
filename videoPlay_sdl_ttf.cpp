@@ -1,10 +1,10 @@
 // =================================================================================
-// 新方案：使用 SDL2 的图形化视频播放器 (v10 - 紧凑行距最终版)
+//  使用 SDL2 的图形化视频播放器 
 //
 // 【重要】此版本需要将所有资源文件（DLLs, data, audio, font）都放在 run 目录中。
 //
-// 编译指令示例 (无变化):
-// g++ videoPlay_sdl_ttf.cpp -o ./run/videoPlay_sdl_ttf.exe -I./SDL2/include -L./SDL2/lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_ttf
+// 编译脚本：videoPlay_sdl_ttf.bat
+// 
 // =================================================================================
 
 #include <iostream>
@@ -132,7 +132,6 @@ int main(int argc, char* argv[]) {
     TTF_SizeText(font, "#", &char_width, &char_height);
     
     // --- 核心修改：引入垂直重叠，消除行间距 ---
-    // 你可以微调这个值，2 通常是一个不错的开始
     constexpr int VERTICAL_OVERLAP = 2; 
     const int vertical_step = char_height - VERTICAL_OVERLAP;
 

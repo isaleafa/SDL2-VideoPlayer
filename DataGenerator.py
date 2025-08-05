@@ -1,7 +1,7 @@
 import cv2
 import os
 import sys
-import struct # 引入 struct 模块用于打包二进制数据
+import struct
 
 # --- 配置 ---
 # 视频文件路径
@@ -34,7 +34,6 @@ def process_video(input_path, output_path):
         return
 
     # 3. 计算最终用于渲染的宽度和高度
-    # 我们不再需要控制台的字符比例修正，可以直接使用一个固定的逻辑宽度
     render_width = 150
     # 根据原始视频的宽高比，计算出成比例的高度
     render_height = int((source_height / source_width) * render_width)
@@ -49,8 +48,6 @@ def process_video(input_path, output_path):
     # 4. 写入文件
     try:
         with open(output_path, 'wb') as f:
-            # --- 关键修改：写入文件头，增加帧率 ---
-            # 'I' 代表一个4字节的无符号整数, 'f' 代表一个4字节的浮点数
             # 我们依次写入宽度、高度、帧数和帧率
             header = struct.pack('IIIf', render_width, render_height, frame_count, fps)
             f.write(header)

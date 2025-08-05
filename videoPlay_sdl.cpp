@@ -3,8 +3,8 @@
 //
 // 【重要】此版本需要使用新版的 Python 脚本来生成带有文件头的数据文件。
 //
-// 编译指令示例 (无变化):
-// g++ videoPlay_sdl.cpp -o ./run/videoPlay_sdl.exe -I./SDL2/include -L./SDL2/lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer
+// 编译脚本：videoPlay_sdl.bat
+//
 // =================================================================================
 
 #include <iostream>

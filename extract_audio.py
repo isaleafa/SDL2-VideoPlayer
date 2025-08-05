@@ -1,11 +1,10 @@
-# 导入 moviepy 中的 VideoFileClip 类
 from moviepy.editor import VideoFileClip
 import os
 
 # --- 配置 ---
 # 输入的视频文件路径
 video_path = 'frame.mp4'
-# 输出的音频文件路径（与C++代码中的要求一致）
+# 输出的音频文件路径
 output_audio_path = './run/audio.mp3'
 # --- 配置结束 ---
 

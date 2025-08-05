@@ -33,8 +33,8 @@ E:\Code\Cpp\PlayVideoOnTerminal\
 │   ├── videoPlay_sdl_ttf.exe  # (编译后生成) 字符版可执行文件
 │   ├── frames.data          # (生成后放入) 视频数据
 │   ├── audio.mp3            # (生成后放入) 音频文件
-│   ├── font.ttf             # (准备好后放入) 字体文件
-│   └── *.dll                # (准备好后放入) 所有需要的DLL文件
+│   ├── font.ttf             #  字体文件
+│   └── *.dll                #  所有需要的DLL文件
 │
 ├── frame.mp4            # 你的源视频文件
 ├── audio.m4a            # (可选) 你的源音频文件
@@ -43,7 +43,11 @@ E:\Code\Cpp\PlayVideoOnTerminal\
 ├── videoPlay_sdl_ttf.cpp  # 字符版 C++ 源代码
 │
 ├── DataGenerator.py     # 用于生成 frames.data 的 Python 脚本
-└── m4aToMp3.py          # 用于将 M4A 转换为 MP3 的 Python 脚本
+├── m4aTomp3.py          # 用于将 M4A 转换为 MP3 的 Python 脚本
+│
+├── videoPlay_sdl.bat      # 像素版 Windows 编译脚本
+└── videoPlay_sdl_ttf.bat  # 字符版 Windows 编译脚本
+
 ```
 ---
 
@@ -75,9 +79,24 @@ E:\Code\Cpp\PlayVideoOnTerminal\
 
 将你的视频文件命名为 `frame.mp4` 并放入项目根目录。
 
-### 第二步：转换音频 (如果需要)
+**Ps: 如果你做好了这一步但是不想看2-4步，你可以直接运行编译脚本文件 `videoPlay_sdl.bat` 或 `videoPlay_sdl_ttf.bat`，它们会自动完成后续步骤。**
+✅ 像素版
+```bash
+.\videoPlay_sdl.bat
+``` 
+✅ 字符复古版
+```bash
+.\videoPlay_sdl_ttf.bat
+```
+### 第二步：提取和转换音频 (如果需要)
 
-如果你的音频不是 MP3 格式，请运行 `m4aToMp3.py` 脚本，它会自动将 `audio.m4a` 转换为 `audio.mp3`。
+使用`extract_audio.py` 脚本从视频中提取音频，生成 `audio.mp3` 文件。
+
+```bash
+python extract_audio.py
+```
+
+或者你自带音频文件，但不是 MP3 格式，请运行 `m4aToMp3.py` 脚本，它会自动将 `audio.m4a` 转换为 `audio.mp3`。
 
 ```bash
 python m4aToMp3.py
@@ -85,19 +104,18 @@ python m4aToMp3.py
 
 ### 第三步：生成视频数据 (frames.data)
 
-打开 `DataGenerator.py`。
-找到 `char_aspect_ratio_correction` 变量，确保它的值是 1.0 (或直接注释掉这行修正代码)。
-运行脚本: `python DataGenerator.py`
+使用 `DataGenerator.py` 脚本生成 `frames.data` 文件。
+会自动保存到`run/`目录下。
 
+```bash
+python DataGenerator.py
+```
 
-### 第四步：准备 run 目录
-在项目根目录下创建一个名为 `run` 的文件夹。
-
-### 第五步：编译程序
-打开终端，确保你在项目根目录下，然后根据你的选择，运行对应的编译指令：
+### 第四步：编译程序
+打开终端，确保你在项目根目录下，然后根据你的选择，运行对应的编译脚本：
 ✅ 编译【像素版】:
 ```bash
-g++ videoPlay_sdl.cpp -o ./run/videoPlay_sdl.exe -I./SDL2/include -L./SDL2/lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer
+g++ videoPlay_sdl.cpp -o ./run/videoPlay_sdl -I./SDL2/include -L./SDL2/lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer
 ```
 
 ✅ 编译【字符复古版】:
@@ -105,7 +123,7 @@ g++ videoPlay_sdl.cpp -o ./run/videoPlay_sdl.exe -I./SDL2/include -L./SDL2/lib -
 g++ videoPlay_sdl_ttf.cpp -o ./run/videoPlay_sdl_ttf.exe -I./SDL2/include -L./SDL2/lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_ttf
 ```
 
-### 第六步：运行程序
+### 第五步：运行程序
 进入 `run` 目录:
 ```bash
 cd run
