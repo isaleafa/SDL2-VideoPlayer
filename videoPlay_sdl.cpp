@@ -24,7 +24,7 @@ uint32_t g_frame_height = 0;
 uint32_t g_frame_count = 0;
 float    g_fps = 0.0f; 
 
-const std::string FRAME_DATA_PATH = "./run/frames.data";
+const std::string FRAME_DATA_PATH = "frames.data";
 // --- 不再需要固定的音频路径常量 ---
 // const std::string AUDIO_DATA_PATH = "audio.mp3";
 
@@ -100,7 +100,7 @@ int main(int argc, char* argv[]) {
 
     // --- 关键修改：自动检测并加载音频文件，并提供详细错误信息 ---
     Mix_Music *music = nullptr;
-    std::vector<std::string> audio_paths = {"./run/audio.mp3", "./run/audio.m4a", "./run/audio.ogg", "./run/audio.wav"};
+    std::vector<std::string> audio_paths = {"./audio.mp3", "./audio.m4a", "./audio.ogg", "./audio.wav"};
     for (const auto& path : audio_paths) {
         // 首先检查文件是否存在
         std::ifstream f(path.c_str());

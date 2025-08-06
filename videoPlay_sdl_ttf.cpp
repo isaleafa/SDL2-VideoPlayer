@@ -26,7 +26,7 @@ uint32_t g_frame_count = 0;
 float    g_fps = 0.0f; 
 
 // --- 路径已根据你的修改进行统一 ---
-const std::string FRAME_DATA_PATH = "./run/frames.data";
+const std::string FRAME_DATA_PATH = "./frames.data";
 
 // 像素结构保持不变
 struct FramePixel {
@@ -106,7 +106,7 @@ int main(int argc, char* argv[]) {
 
     // 自动检测并加载音频文件
     Mix_Music *music = nullptr;
-    std::vector<std::string> audio_paths = {"./run/audio.mp3", "./run/audio.m4a", "./run/audio.ogg", "./run/audio.wav"};
+    std::vector<std::string> audio_paths = {"./audio.mp3", "./audio.m4a", "./audio.ogg", "./audio.wav"};
     for (const auto& path : audio_paths) {
         music = Mix_LoadMUS(path.c_str());
         if (music) {
