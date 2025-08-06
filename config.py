@@ -1,0 +1,5 @@
+VIDEO_PATH = "./frame.mp4"
+AUDIO_PATH = "./audio.m4a"
+OUTPUT_DATA_FILE = "./run/frames.data"
+OUTPUT_AUDIO_FILE = "./run/audio.mp3"
+FFMPEG_PATH = "E:\\Apps\\ffmpeg\\bin\\ffmpeg.exe"

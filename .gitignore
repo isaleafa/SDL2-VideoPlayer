@@ -3,3 +3,4 @@ frame.*
 frames.*
 .vscode/
 .idea/
+*.exe

@@ -21,6 +21,7 @@
 ## 📁 项目结构
 
 为了获得最佳体验，建议采用以下文件和目录结构：
+
 ```
 E:\Code\Cpp\PlayVideoOnTerminal\
 │
@@ -49,6 +50,7 @@ E:\Code\Cpp\PlayVideoOnTerminal\
 └── videoPlay_sdl_ttf.bat  # 字符版 Windows 编译脚本
 
 ```
+
 ---
 
 ## 🛠️ 环境配置指南
@@ -57,7 +59,7 @@ E:\Code\Cpp\PlayVideoOnTerminal\
 
 ### 1. C++ 编译器
 
-本项目使用 **MinGW-w64 g++** 编译器。请确保你已正确安装并将其添加到了系统环境变量中。推荐使用 64位 (x86_64) 版本。
+本项目使用 **MinGW-w64 g++** 编译器。请确保你已正确安装并将其添加到了系统环境变量中。推荐使用 64 位 (x86_64) 版本。
 
 ### 2. Python 环境
 
@@ -67,27 +69,37 @@ E:\Code\Cpp\PlayVideoOnTerminal\
   ```bash
   pip install opencv-python pydub
   ```
+
 ### 3. FFmpeg
+
 这是一个用于音视频转换的命令行工具，是成功转换 M4A 到 MP3 的关键。
+当然如果你的视频自带背景音乐，那你也可以不安装 FFmpeg 。
 从 ffmpeg.org 下载 release-essentials.zip 版本。
+
 - 解压到一个固定的位置（例如 E:\ffmpeg）。
 - 将解压后文件夹里的 bin 目录 (例如 E:\ffmpeg\bin) 添加到系统的 Path 环境变量中。
 - 打开一个新的终端，输入 ffmpeg -version，如果能看到版本信息，则代表安装成功。
 
 ## 🚀 使用流程
+
 ### 第一步：准备媒体文件
 
 将你的视频文件命名为 `frame.mp4` 并放入项目根目录。
 
-**Ps: 如果你做好了这一步但是不想看2-4步，你可以直接运行编译脚本文件 `videoPlay_sdl.bat` 或 `videoPlay_sdl_ttf.bat`，它们会自动完成后续步骤。**
+**Ps: 如果你做好了这一步但是不想看 2-4 步，你可以直接运行编译脚本文件 `videoPlay_sdl.bat` 或 `videoPlay_sdl_ttf.bat`，它们会自动完成后续步骤。**
+
 ✅ 像素版
+
 ```bash
 .\videoPlay_sdl.bat
-``` 
+```
+
 ✅ 字符复古版
+
 ```bash
 .\videoPlay_sdl_ttf.bat
 ```
+
 ### 第二步：提取和转换音频 (如果需要)
 
 使用`extract_audio.py` 脚本从视频中提取音频，生成 `audio.mp3` 文件。
@@ -112,37 +124,47 @@ python DataGenerator.py
 ```
 
 ### 第四步：编译程序
+
 打开终端，确保你在项目根目录下，然后根据你的选择，运行对应的编译脚本：
 ✅ 编译【像素版】:
+
 ```bash
 g++ videoPlay_sdl.cpp -o ./run/videoPlay_sdl -I./SDL2/include -L./SDL2/lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer
 ```
 
 ✅ 编译【字符复古版】:
+
 ```bash
 g++ videoPlay_sdl_ttf.cpp -o ./run/videoPlay_sdl_ttf.exe -I./SDL2/include -L./SDL2/lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_ttf
 ```
 
 ### 第五步：运行程序
+
 进入 `run` 目录:
+
 ```bash
 cd run
 ```
 
 运行你刚刚编译好的程序:
 ✅ 运行像素版
+
 ```bash
 .\videoPlay_sdl.exe
-``` 
+```
 
 ✅ 运行字符复古版
+
 ```bash
 .\videoPlay_sdl_ttf.exe
-```         
+```
+
 然后，享受你的成果吧！
 
 ## 🧩 扩展阅读
+
 爬取视频：
+
 ```bash
 yt-dlp --no-playlist "https://www.bilibili.com/video/BV1xZ421Y7a1/""
 ```

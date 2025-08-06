@@ -1,5 +1,6 @@
 import os
-import subprocess # 引入 subprocess 用于更底层的命令执行和调试
+import subprocess
+import config
 
 # --- 【重要】请在这里修改为你自己的 FFmpeg 路径 ---
 # 1. 找到你之前解压的 ffmpeg 文件夹。
@@ -8,15 +9,15 @@ import subprocess # 引入 subprocess 用于更底层的命令执行和调试
 # 示例: "C:/ffmpeg/bin/ffmpeg.exe" 或 "E:\\ffmpeg\\bin\\ffmpeg.exe"
 #
 # 如果你不确定，可以先留空，脚本会尝试从系统环境变量中寻找。
-ffmpeg_path = "E:\\Apps\\ffmpeg\\bin\\ffmpeg.exe" 
+ffmpeg_path =  config.FFMPEG_PATH
 # ----------------------------------------------------
 
 
 # --- 配置 ---
 # 输入的 M4A 文件名
-input_file = 'audio.m4a'
+input_file = config.AUDIO_PATH
 # 输出的 MP3 文件名
-output_file = './run/audio.mp3'
+output_file = config.OUTPUT_AUDIO_FILE
 # --- 配置结束 ---
 
 def check_ffmpeg(path):

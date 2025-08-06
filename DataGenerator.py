@@ -2,12 +2,13 @@ import cv2
 import os
 import sys
 import struct
+import config
 
 # --- 配置 ---
 # 视频文件路径
-video_path = 'frame.mp4'
+video_path = config.VIDEO_PATH
 # 输出帧数据文件
-output_data_file = './run/frames.data'
+output_data_file = config.OUTPUT_DATA_FILE
 # --- 配置结束 ---
 
 def process_video(input_path, output_path):

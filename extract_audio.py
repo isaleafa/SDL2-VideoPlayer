@@ -1,11 +1,12 @@
 from moviepy.editor import VideoFileClip
 import os
+import config
 
 # --- 配置 ---
 # 输入的视频文件路径
-video_path = 'frame.mp4'
+video_path = config.VIDEO_PATH
 # 输出的音频文件路径
-output_audio_path = './run/audio.mp3'
+output_audio_path = config.OUTPUT_AUDIO_FILE
 # --- 配置结束 ---
 
 def extract_audio(input_path, output_path):
